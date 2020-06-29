@@ -10,7 +10,7 @@ class Card extends React.Component {
       >
         <div style={{ textAlign: 'center' }}>
           <p style={{ fontWeight: 'bold', fontSize: '24px', marginBottom: '10px' }}>#{index + 1}</p>
-          <div style={{width:'200px',height:'200px',backgroundColor:'#ccc',display:'block',margin:'0 auto'}}><img src={item.owner.avatar_url} style={{ width: '100%' }} alt="" /></div>
+          <div style={{height:'200px',backgroundColor:'#ccc',display:'block',margin:'0 auto'}}><img src={item.owner.avatar_url} style={{ width: '100%' }} alt="" /></div>
           <p style={{ marginTop: '20px' }}><a href={item.html_url} style={{ fontWeight: 'bold', textDecoration: 'none' }}>{item.name}/{item.owner.login}</a></p>
         </div>
         <ul style={{ listStyle: 'none', marginTop: '30px' }}>

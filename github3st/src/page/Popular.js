@@ -15,7 +15,8 @@ class Popular extends React.Component {
       loading: false,
       hasMore: true,
       // tip: "loading",
-      error:'loading.....'
+      errFlag:false,
+      error:''
     };
   }
 
@@ -37,7 +38,8 @@ class Popular extends React.Component {
       loading: true,
       // tip: "请稍等",
       hasMore: true,
-      error:'loading.....'
+      // error:'loading.....'
+      errFlag:false
     });
     const { nowApi, pageNum, nowList } = this.state;
     await axios({
@@ -52,7 +54,8 @@ class Popular extends React.Component {
           nowList: [...nowList, ...res.data.items].slice(0, pageNum * 10),
           pageNum: pageNum + 1,
           loading: false,
-          error:'loading.....'
+          errFlag:false
+          // error:'loading.....'
           // tip: "请稍等",
         });
       })
@@ -62,7 +65,8 @@ class Popular extends React.Component {
           loading: false,
           // tip: "请求超时",
           hasMore: false,
-          error:err.response
+          error:err.response.statusText,
+          errFlag:true
         });
       });
   };
@@ -72,7 +76,8 @@ class Popular extends React.Component {
       loading: true,
       // tip: "请稍等",
       hasMore: true,
-      error:'loading.....'
+      // error:'loading.....'
+      errFlag:false
     });
     await axios
       .get(nowUrl)
@@ -81,7 +86,9 @@ class Popular extends React.Component {
           loading: false,
           // tip: "请稍等",
           nowList: res.data.items.slice(0, 10),
-          error:'loading.....'
+          // error:'loading.....',
+          errFlag:false
+          
         });
       })
       .catch((err) => {
@@ -90,7 +97,8 @@ class Popular extends React.Component {
           loading: false,
           // tip: "请求超时",
           hasMore: false,
-          error:err.response
+          error:err.response.statusText,
+          errFlag:true
         });
       });
   };
@@ -102,7 +110,8 @@ class Popular extends React.Component {
       loading: true,
       // tip: "请稍等",
       hasMore: true,
-      error:'loading.....'
+      // error:'loading.....'
+      errFlag:false
     });
     const lang = window.location.hash.split("=")[1];
     // console.log('设置的时候', window.location.hash.split('=')[1]);
@@ -120,17 +129,18 @@ class Popular extends React.Component {
       loading: true,
       // tip: "请稍等",
       hasMore: true,
-      error:'loading.....'
+      errFlag:false
+      // error:'loading.....'
     });
     return nowUrl;
   };
 
   render() {
-    const { loading, hasMore, error } = this.state;
-    console.log("error--->",error);
+    const { loading, hasMore, error ,errFlag} = this.state;
+    console.log("error--->",errFlag,error);
     return (
       <div>
-        <Header />(
+        <Header />
         <InfiniteScroll
           pageStart={1}
           loadMore={this.search}
@@ -150,11 +160,11 @@ class Popular extends React.Component {
             {this.state.nowList.map((item, key) => (
               <Card item={item} index={key} key={key} />
             ))}
+            {errFlag?<h3 style={{ textAlign: "center" }}>{error}</h3>:<h3 style={{ textAlign: "center" }}>loading..</h3>}
+            
           </div>
-          {/* {loading ? <h5 style={{ textAlign: "center" }}>{tip}</h5> : ""} */}
-          <h5 style={{ textAlign: "center" }}>{error}</h5>
         </InfiniteScroll>
-        )
+        
         <Footer>
           <span>版权所有 &copy; xxn</span>
         </Footer>
