@@ -25,20 +25,20 @@
   "homepage": "https://github.com/xxn-my/01-train#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
     "font-awesome": "^4.7.0",
     "formik": "^2.1.4",
     "gh-pages": "^3.1.0",
-    "normalize.css": "^8.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-infinite-scroller": "^1.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-hot-loader": "^4.12.21",
-    "prettier": "^2.0.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-config-airbnb": "^18.1.0"
+    "normalize.css": "^8.0.1",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.21",
+    "react-infinite-scroller": "^1.2.4",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
@@ -55,7 +55,6 @@
     "babel-standalone": "^6.26.0",
     "css-loader": "^3.6.0",
     "eslint": "^7.2.0",
-    
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -87,5 +86,4 @@
     ],
     "src/**/*.{js,jsx}": "eslint --ext .js"
   }
-
 }
