@@ -49,7 +49,7 @@ class Combination extends React.Component {
               <Result player1={player1} player2={player2} reset={this.reset} />
               )
         }
-        return <Battle startBattle={this.startBattle} />
+        return <Battle startBattle={this.startBattle} ///>
     }
 }
 export default Combination;

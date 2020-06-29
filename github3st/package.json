@@ -33,7 +33,9 @@
     "react-dom": "^16.13.1",
     "react-infinite-scroller": "^1.2.4",
     "react-router-dom": "^5.2.0" ,
-    "react-hot-loader": "^4.12.21"
+    "react-hot-loader": "^4.12.21",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
   },
   "devDependencies": {
     "webpack": "^4.43.0",
