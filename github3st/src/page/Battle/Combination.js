@@ -24,7 +24,6 @@ class Combination extends React.Component {
                     player2:play2
                 })
         }
-
     }
 
     startBattle = (p1, p2) => {
