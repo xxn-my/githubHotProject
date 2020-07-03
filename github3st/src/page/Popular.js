@@ -15,8 +15,8 @@ class Popular extends React.Component {
       loading: false,
       hasMore: true,
       // tip: "loading",
-      errFlag:false,
-      error:''
+      errFlag: false,
+      error: "",
     };
   }
 
@@ -39,7 +39,7 @@ class Popular extends React.Component {
       // tip: "请稍等",
       hasMore: true,
       // error:'loading.....'
-      errFlag:false
+      errFlag: false,
     });
     const { nowApi, pageNum, nowList } = this.state;
     await axios({
@@ -54,7 +54,7 @@ class Popular extends React.Component {
           nowList: [...nowList, ...res.data.items].slice(0, pageNum * 10),
           pageNum: pageNum + 1,
           loading: false,
-          errFlag:false
+          errFlag: false,
           // error:'loading.....'
           // tip: "请稍等",
         });
@@ -65,8 +65,8 @@ class Popular extends React.Component {
           loading: false,
           // tip: "请求超时",
           hasMore: false,
-          error:err.response.statusText,
-          errFlag:true
+          error: err.response.statusText,
+          errFlag: true,
         });
       });
   };
@@ -77,7 +77,7 @@ class Popular extends React.Component {
       // tip: "请稍等",
       hasMore: true,
       // error:'loading.....'
-      errFlag:false
+      errFlag: false,
     });
     await axios
       .get(nowUrl)
@@ -87,8 +87,7 @@ class Popular extends React.Component {
           // tip: "请稍等",
           nowList: res.data.items.slice(0, 10),
           // error:'loading.....',
-          errFlag:false
-          
+          errFlag: false,
         });
       })
       .catch((err) => {
@@ -97,8 +96,8 @@ class Popular extends React.Component {
           loading: false,
           // tip: "请求超时",
           hasMore: false,
-          error:err.response.statusText,
-          errFlag:true
+          error: err.response.statusText,
+          errFlag: true,
         });
       });
   };
@@ -111,7 +110,7 @@ class Popular extends React.Component {
       // tip: "请稍等",
       hasMore: true,
       // error:'loading.....'
-      errFlag:false
+      errFlag: false,
     });
     const lang = window.location.hash.split("=")[1];
     // console.log('设置的时候', window.location.hash.split('=')[1]);
@@ -129,15 +128,15 @@ class Popular extends React.Component {
       loading: true,
       // tip: "请稍等",
       hasMore: true,
-      errFlag:false
+      errFlag: false,
       // error:'loading.....'
     });
     return nowUrl;
   };
 
   render() {
-    const { loading, hasMore, error ,errFlag} = this.state;
-    console.log("error--->",errFlag,error);
+    const { loading, hasMore, error, errFlag } = this.state;
+    console.log("error--->", errFlag, error);
     return (
       <div>
         <Header />
@@ -146,13 +145,17 @@ class Popular extends React.Component {
           loadMore={this.search}
           hasMore={!loading && hasMore}
           useWindow
-          loader={<div className="loader" style={{"height":'50px'}} key={0}>{error}</div>}
+          loader={
+            <div className="loader" style={{ height: "50px" }} key={0}>
+              {error}
+            </div>
+          }
           // loader={<div className="loader" key={0}><p style={{ textAlign: "center" }}>{error}</p></div>}
         >
           <div
             style={{
               display: "flex",
-              justifyContent: "space-around",
+              justifyContent: "center",
               flexFlow: "row wrap",
               marginTop: "10px",
             }}
@@ -160,11 +163,14 @@ class Popular extends React.Component {
             {this.state.nowList.map((item, key) => (
               <Card item={item} index={key} key={key} />
             ))}
-            {errFlag?<h3 style={{ textAlign: "center" }}>{error}</h3>:<h3 style={{ textAlign: "center" }}>loading..</h3>}
-            
           </div>
+          {errFlag ? (
+            <h3 style={{ textAlign: "center" }}>{error}</h3>
+          ) : (
+            <h3 style={{ textAlign: "center" }}>loading..</h3>
+          )}
         </InfiniteScroll>
-        
+
         <Footer>
           <span>版权所有 &copy; xxn</span>
         </Footer>
