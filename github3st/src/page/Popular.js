@@ -4,6 +4,8 @@ import InfiniteScroll from "react-infinite-scroller";
 import Footer from "@/components/Footer";
 import Card from "@/components/Card";
 import Header from "@/components/Header";
+import { Row, Col } from "antd";
+import "antd/dist/antd.css";
 
 class Popular extends React.Component {
   constructor(props) {
@@ -152,18 +154,20 @@ class Popular extends React.Component {
           }
           // loader={<div className="loader" key={0}><p style={{ textAlign: "center" }}>{error}</p></div>}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexFlow: "row wrap",
-              marginTop: "10px",
-            }}
-          >
+          <Row justify="space-around">
+            {/* // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   flexFlow: "row wrap",
+            //   marginTop: "10px",
+            // }} */}
+
             {this.state.nowList.map((item, key) => (
-              <Card item={item} index={key} key={key} />
+              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
+                <Card item={item} index={key} key={key} />
+              </Col>
             ))}
-          </div>
+          </Row>
           {errFlag ? (
             <h3 style={{ textAlign: "center" }}>{error}</h3>
           ) : (

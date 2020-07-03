@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/xxn-my/01-train#readme",
   "dependencies": {
+    "antd": "^4.4.0",
     "axios": "^0.19.2",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",

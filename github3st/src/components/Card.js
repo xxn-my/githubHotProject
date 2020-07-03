@@ -7,8 +7,8 @@ class Card extends React.Component {
       <div
         style={{
           backgroundColor: "rgba(0,0,0,0.08)",
-          width: "23%",
           padding: "20px",
+          minHeight: "610px",
           borderRadius: "20px",
           boxSizing: "border-box",
           margin: "10px 5px",
@@ -26,14 +26,28 @@ class Card extends React.Component {
           </p>
           <div
             style={{
-              backgroundColor: "#ccc",
-              display: "block",
-              margin: "0 auto",
+              minHeight: "250px",
+              // backgroundColor: "#ccc",
+              // display: "block",
+              // margin: "0 auto",
+              // display:'teble-cell',
+              verticalAlign: "middle",
             }}
           >
-            <img src={item.owner.avatar_url} style={{ width: "100%" }} alt="" />
+            <img
+              src={item.owner.avatar_url}
+              style={{ width: "100%", minHeight: "250px" }}
+              alt=""
+            />
           </div>
-          <p style={{ marginTop: "20px" }}>
+          <p
+            style={{
+              marginTop: "20px",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
             <a
               href={item.html_url}
               style={{ fontWeight: "bold", textDecoration: "none" }}

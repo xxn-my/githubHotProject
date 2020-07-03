@@ -6,7 +6,7 @@ class Result extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error:'',
+      error: "",
       player1: {
         loading: true,
       },
@@ -28,7 +28,7 @@ class Result extends React.Component {
       })
       .catch((err) => {
         console.log("这里的错误", err);
-        this.setState({error:err.response.statusText})
+        this.setState({ error: err.response.statusText });
       });
     await axios
       .get(`https://api.github.com/users/${player2}`)
@@ -39,25 +39,21 @@ class Result extends React.Component {
       })
       .catch((err) => {
         console.log("这里的错误", err);
-        this.setState({error:err.response.statusText})
+        this.setState({ error: err.response.statusText });
       });
   }
 
   render() {
     const { reset } = this.props;
-    const { player1, player2,error } = this.state;
+    const { player1, player2, error } = this.state;
     if (player1.loading || player2.loading) {
-      return (
-        <div className={styles.tac}>
-          {error}
-        </div>
-      );
+      return <div className={styles.tac}>{error || "loading..."}</div>;
     }
     // console.log("render时候",player1,player2)
     if (player1.public_repos > player2.public_repos) {
       player1.role = "winner";
       player2.role = "loser";
-    } else if (player1.public_repos < player2.public_repos){
+    } else if (player1.public_repos < player2.public_repos) {
       player1.role = "loser";
       player2.role = "winner";
     } else if (player1.public_repos === player2.public_repos) {
